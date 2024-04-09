@@ -1,6 +1,7 @@
 import { SignIn } from 'pages/sign-in'
 import { Layout } from 'app/layout'
 import { RouteObject } from 'react-router-dom'
+import { RegistrationPage } from 'pages/registration'
 
 export const projectRoutes = {
   home: '/',
@@ -18,6 +19,10 @@ export const routes: RouteObject[] = [
       {
         path: projectRoutes.signIn,
         Component: SignIn,
+      },
+      {
+        path: projectRoutes.registration,
+        Component: RegistrationPage,
       },
     ],
   },

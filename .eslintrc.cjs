@@ -23,6 +23,7 @@ module.exports = {
         'tsx': 'never',
       },
     ],
+    'import/no-extraneous-dependencies': 'off',
     'react/function-component-definition': 'off',
     'react/no-array-index-key': 'off',
     'react/react-in-jsx-scope': 'off',
@@ -106,4 +107,4 @@ module.exports = {
 
     },
   ],
-};
+}
