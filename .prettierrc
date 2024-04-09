@@ -1,0 +1,44 @@
+{
+  "useTabs": false,
+  "semi": false,
+  "endOfLine": "lf",
+  "jsxBracketSameLine": false,
+  "trailingComma": "es5",
+  "singleQuote": true,
+  "printWidth": 90,
+  "tabWidth": 2,
+  "arrowParens": "avoid",
+  "importOrder": [
+    "^@core/(.*)$",
+    "^@server/(.*)$",
+    "^@ui/(.*)$",
+    "^[./]",
+    "^react",
+    ",^@?\\w",
+    "^(@|components)(/.*|$)",
+    ",^\\.\\.(?!/?$)",
+    ",^\\.\\./?$",
+    ",^\\u0000",
+    ",^\\./(?=.*/)(?!/?$)",
+    ",^\\.(?!/?$)",
+    ",^\\./?$",
+    ",^.+\\.?(css)$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "overrides": [
+    {
+      "files": [
+        "*.json",
+        "*.cjs",
+        "*.md"
+      ],
+      "options": {
+        "trailingComma:": "none",
+        "singleQuote": false,
+        "tabWidth": 2,
+        "quoteProps": "preserve"
+      }
+    }
+  ]
+}
