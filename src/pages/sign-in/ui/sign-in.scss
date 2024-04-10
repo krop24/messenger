@@ -1,5 +1,7 @@
 .sign-in {
+  @apply w-full flex;
+
   &__form {
-    @apply flex flex-col gap-2;
+    @apply flex flex-col m-auto w-full max-w-[400px] gap-4;
   }
 }

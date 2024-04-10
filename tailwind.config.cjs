@@ -9,7 +9,16 @@ module.exports = {
       serif: ['Inter', 'sans-serif'],
       mono: ['Inter', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          400: '#1C294B',
+        },
+        secondary: {
+          400: '#9FF5DC',
+        },
+      },
+    },
   },
   plugins: [],
-};
+}

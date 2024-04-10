@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter Bold'), local('Inter-Bold'),
-  url('/fonts/Inter-Bold.ttf') format('truetype');
+  url('/assets/fonts/Inter-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -10,7 +10,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter Black'), local('Inter-Black'),
-  url('/fonts/Inter-Black.ttf') format('truetype');
+  url('/assets/fonts/Inter-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter ExtraBold'), local('Inter-ExtraBold'),
-  url('/fonts/Inter-ExtraBold.ttf') format('truetype');
+  url('/assets/fonts/Inter-ExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -28,7 +28,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter ExtraLight'), local('Inter-ExtraLight'),
-  url('/fonts/Inter-ExtraLight.ttf') format('truetype');
+  url('/assets/fonts/Inter-ExtraLight.ttf') format('truetype');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -37,7 +37,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter Regular'), local('Inter-Regular'),
-  url('/fonts/Inter-Regular.ttf') format('truetype');
+  url('/assets/fonts/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -46,7 +46,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter Thin'), local('Inter-Thin'),
-  url('/fonts/Inter-Thin.ttf') format('truetype');
+  url('/assets/fonts/Inter-Thin.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -55,7 +55,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter SemiBold'), local('Inter-SemiBold'),
-  url('/fonts/Inter-SemiBold.ttf') format('truetype');
+  url('/assets/fonts/Inter-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -64,7 +64,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter Light'), local('Inter-Light'),
-  url('/fonts/Inter-Light.ttf') format('truetype');
+  url('/assets/fonts/Inter-Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -73,7 +73,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter Medium'), local('Inter-Medium'),
-  url('/fonts/Inter-Medium.ttf') format('truetype');
+  url('/assets/fonts/Inter-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -83,7 +83,7 @@
 @font-face {
   font-family: 'Inter';
   src: local('Inter Variable'), local('Inter-Variable'),
-  url('/fonts/Inter-Variable.ttf') format('truetype');
+  url('/assets/fonts/Inter-Variable.ttf') format('truetype');
   font-style: normal;
   font-display: swap;
 }

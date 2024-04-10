@@ -6,3 +6,16 @@
 h1 {
   @apply text-3xl font-bold;
 }
+
+
+input,
+textarea,
+select {
+  outline: none;
+
+  &:active,
+  &:focus,
+  &:hover {
+    outline: none;
+  }
+}
