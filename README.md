@@ -1,4 +1,4 @@
-## Whisper Messenger
+## Whisper Messenger [![Whisper](./public/assets/img/whisper-logo.svg)](https://messenger-whisper.vercel.app/)
 
 How to start project:
 
