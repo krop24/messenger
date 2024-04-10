@@ -3,7 +3,7 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     fontFamily: {
-      display: ['"Inter"', 'sans-serif'],
+      display: ['Inter', 'sans-serif'],
       body: ['Inter', 'sans-serif'],
       sans: ['Inter', 'sans-serif'],
       serif: ['Inter', 'sans-serif'],
@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       colors: {
         primary: {
+          100: 'rgba(28, 41, 75, 40%)',
           400: '#1C294B',
         },
         secondary: {

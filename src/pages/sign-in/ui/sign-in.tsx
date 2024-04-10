@@ -2,17 +2,44 @@ import './sign-in.scss'
 import { TextField } from 'shared/ui/text-field'
 import { Button } from 'shared/ui/button'
 import { Logo } from 'shared/ui/logo'
+import { handleUpdateValue, loginSelector, signIn } from 'app/store/reducers/auth'
+import { useDispatch } from 'react-redux'
+import { ChangeEvent } from 'react'
+import { useAppSelector } from 'shared/lib/store'
 
 export const SignIn = () => {
+  const dispatch = useDispatch()
+  const { username, password } = useAppSelector(loginSelector)
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    dispatch(
+      handleUpdateValue({ value: e.target.value, name: e.target.name, type: 'login' })
+    )
+
+  const handleSignIn = () => dispatch(signIn())
+
   return (
     <div className="sign-in">
       <div className="h-full w-1/2 p-6 flex">
         <form className="sign-in__form">
           <Logo className="flex mx-auto text-primary-400 w-32" />
           <h1 className="text-center mb-4">Войти в Whisper</h1>
-          <TextField label="Username" placeholder="Enter username" />
-          <TextField label="Password" placeholder="Enter password" type="password" />
-          <Button>Войти</Button>
+          <TextField
+            onChange={handleChange}
+            label="Username"
+            value={username}
+            name="username"
+            placeholder="Enter username"
+          />
+          <TextField
+            onChange={handleChange}
+            name="password"
+            value={password}
+            label="Password"
+            placeholder="Enter password"
+            type="password"
+          />
+          <Button onClick={handleSignIn}>Войти</Button>
         </form>
       </div>
 

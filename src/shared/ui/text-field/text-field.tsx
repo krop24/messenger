@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import clsx from 'clsx'
 import './text-field.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,8 +16,8 @@ interface ITextFieldProps {
   type?: string
   maxLength?: number | undefined
 
-  onChange?: (e: FormEvent<HTMLInputElement>) => void
-  onInput?: (e: FormEvent<HTMLInputElement>) => void
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+  onInput?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const TextField = ({
@@ -36,7 +36,7 @@ export const TextField = ({
   const [showPassword, setShowPassword] = useState(false)
 
   if (!id) {
-    id = Date.now().toString()
+    id = Math.random().toString()
   }
 
   if (type === 'password') {
@@ -59,6 +59,7 @@ export const TextField = ({
           onInput={onInput}
           type={type}
           className="text-field__input"
+          autoComplete="true"
           placeholder={placeholder}
           name={name}
           maxLength={maxLength}

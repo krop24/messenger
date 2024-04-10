@@ -1,0 +1,28 @@
+.loader {
+  @apply relative w-12 h-12;
+
+  &::after,
+  &::before {
+    content: '';
+    @apply w-12 h-12 rounded-full border-2 border-secondary-400 absolute left-0 right-0;
+    animation: loader 2s linear infinite;
+  }
+
+  &::after {
+    animation-delay: 1s;
+  }
+
+  &__wrapper {
+    @apply fixed left-0 top-0 w-full h-full z-[9999]  bg-primary-100 flex items-center justify-center;
+  }
+}
+
+
+@keyframes loader {
+  0% {
+    @apply scale-0 opacity-100;
+  }
+  100% {
+    @apply scale-100 opacity-0;
+  }
+}
