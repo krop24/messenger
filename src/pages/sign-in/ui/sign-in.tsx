@@ -2,10 +2,12 @@ import './sign-in.scss'
 import { TextField } from 'shared/ui/text-field'
 import { Button } from 'shared/ui/button'
 import { Logo } from 'shared/ui/logo'
-import { handleUpdateValue, loginSelector, signIn } from 'app/store/reducers/auth'
+import { handleUpdateValue, loginSelector, signIn } from 'entities/auth'
 import { useDispatch } from 'react-redux'
 import { ChangeEvent } from 'react'
 import { useAppSelector } from 'shared/lib/store'
+import { Link } from 'react-router-dom'
+import { projectRoutes } from 'app/router'
 
 export const SignIn = () => {
   const dispatch = useDispatch()
@@ -40,6 +42,13 @@ export const SignIn = () => {
             type="password"
           />
           <Button onClick={handleSignIn}>Войти</Button>
+
+          <div className="w-full text-center">
+            Не зарегистрированы?&nbsp;
+            <Link className="inline-block" to={projectRoutes.registration}>
+              Зарегистрироваться
+            </Link>
+          </div>
         </form>
       </div>
 

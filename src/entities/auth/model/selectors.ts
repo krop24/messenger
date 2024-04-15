@@ -13,5 +13,5 @@ export const loginSelector = createSelector(
 
 export const registrationSelector = createSelector(
   authSelector,
-  (state: IAuthState) => state.login
+  (state: IAuthState) => state.registration
 )

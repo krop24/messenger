@@ -19,3 +19,12 @@ select {
     outline: none;
   }
 }
+
+
+a {
+  @apply text-blue-700 transition-all duration-300;
+
+  &:hover {
+    @apply text-primary-300;
+  }
+}

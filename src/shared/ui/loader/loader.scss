@@ -4,7 +4,8 @@
   &::after,
   &::before {
     content: '';
-    @apply w-12 h-12 rounded-full border-2 border-secondary-400 absolute left-0 right-0;
+    @apply w-12 h-12 rounded-full border-2
+    border-secondary-400 absolute left-0 right-0;
     animation: loader 2s linear infinite;
   }
 
@@ -13,7 +14,8 @@
   }
 
   &__wrapper {
-    @apply fixed left-0 top-0 w-full h-full z-[9999]  bg-primary-100 flex items-center justify-center;
+    @apply fixed left-0 top-0 w-full h-full z-[9999]
+    bg-primary-100 flex items-center justify-center;
   }
 }
 

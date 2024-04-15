@@ -17,7 +17,7 @@ export const authSlice = createSlice({
       return state
     },
     signIn: state => {
-      console.log(state)
+      console.log(state.login.username, state.login.password)
     },
   },
 })

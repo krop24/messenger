@@ -1,14 +1,15 @@
-export interface IUser {
+export interface IRegistration {
   username: string
   email: string
   photo: Nullable<string>
   firstName: string
   lastName: string
+  password: string
+  repeatPassword: string
 }
 
 export interface IAuthState {
-  user: IUser
-  registration: IUser
+  registration: IRegistration
   loading: boolean
   login: {
     username: string
