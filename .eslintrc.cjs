@@ -9,7 +9,7 @@ module.exports = {
     'ecmaVersion': 6,
     'sourceType': 'module',
   },
-  plugins: ['jsdoc', '@typescript-eslint', 'prettier'],
+  plugins: ['jsdoc', '@typescript-eslint', 'prettier', 'simple-import-sort'],
   rules: {
     'import/prefer-default-export': 'off',
     'import/extensions': [
@@ -23,6 +23,8 @@ module.exports = {
         'tsx': 'never',
       },
     ],
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
     'import/no-extraneous-dependencies': 'off',
     'react/function-component-definition': 'off',
     'react/no-array-index-key': 'off',
@@ -104,7 +106,28 @@ module.exports = {
   overrides: [
     {
       'files': ['*.js', '*.jsx', '*.ts', '*.tsx'],
+      'rules': {
+        'simple-import-sort/imports': [
+          'error',
+          {
+            'groups': [
+              // Packages `react` related packages come first.
+              ['^react', '^@?\\w'],
+              // Internal packages.
+              ['^(@|components)(/.*|$)'],
 
+              // Parent imports. Put `..` last.
+              ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+              // Side effect imports.
+              ['^\\u0000'],
+              // Other relative imports. Put same-folder imports and `.` last.
+              ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+              // Style imports.
+              ['^.+\\.?(css)$'],
+            ],
+          },
+        ],
+      },
     },
   ],
 }

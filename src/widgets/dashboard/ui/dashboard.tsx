@@ -1,15 +1,16 @@
-import './dashboard.scss'
 import { Link, useLocation } from 'react-router-dom'
-import clsx from 'clsx'
-import { dashboardRoutes, projectRoutes } from 'app/router/const'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { Logo } from 'shared/ui/logo'
-import { Avatar } from 'shared/ui/avatar'
-import { useAppSelector } from 'shared/lib/store'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { dashboardRoutes, projectRoutes } from 'app/router/const'
+import clsx from 'clsx'
 import { userSelector } from 'entities/auth'
+import { useAppSelector } from 'shared/lib/store'
+import { Avatar } from 'shared/ui/avatar'
 import { Button } from 'shared/ui/button'
-import { EButtonType } from 'shared/ui/button/enums.ts'
+import { EButtonType } from 'shared/ui/button/enums'
+import { Logo } from 'shared/ui/logo'
+
+import './dashboard.scss'
 
 export const Dashboard = () => {
   const location = useLocation()
@@ -34,7 +35,7 @@ export const Dashboard = () => {
           to={route.to}
           className={clsx(
             'dashboard__item',
-            isActiveRoute(route.to) && 'dashboard__item-active'
+            isActiveRoute(route.to) && 'dashboard__item-active',
           )}
         >
           <FontAwesomeIcon icon={route.icon as IconProp} />

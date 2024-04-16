@@ -34,10 +34,12 @@
       ]
     },
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "noEmit": true,
     "jsx": "react-jsx",
     /* Linting */
