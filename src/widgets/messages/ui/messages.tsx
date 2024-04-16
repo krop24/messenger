@@ -9,6 +9,7 @@ export const Messages = () => {
       <h2 className="messages__title">Сообщения</h2>
 
       <label htmlFor="search" className="messages__search">
+        <span className="hidden">Search</span>
         <FontAwesomeIcon icon={'search' as IconProp} className="messages__search-icon" />
         <input id="search" type="text" placeholder="Поиск" />
       </label>
