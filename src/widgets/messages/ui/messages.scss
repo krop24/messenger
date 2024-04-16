@@ -1,0 +1,67 @@
+.messages {
+  @apply pt-7;
+
+  &__title {
+    @apply pl-8 mb-4;
+  }
+
+  &__search {
+    @apply max-w-[calc(100%-64px)] mx-auto flex items-center py-3 px-4 bg-white rounded-md;
+
+    &-icon {
+      @apply text-gray-400;
+    }
+
+    input {
+      @apply grow ml-4;
+    }
+  }
+
+  &__filter {
+    @apply px-8 mb-2 w-full;
+  }
+
+  &__list {
+    @apply flex flex-col w-full bg-white rounded-md;
+  }
+
+  &__item {
+    @apply flex items-center px-8 py-2.5 transition-all duration-500 cursor-pointer;
+
+    &:not(:first-child) {
+      @apply border-t border-gray-200;
+    }
+
+    &:hover, &-active {
+      @apply bg-gray-200;
+    }
+  }
+
+  &__content {
+    @apply w-full;
+  }
+
+  &__header {
+    @apply flex items-center justify-between w-full;
+  }
+
+  &__name {
+    @apply font-semibold text-sm;
+  }
+
+  &__time {
+    @apply text-gray-400 text-xs;
+  }
+
+  &__text {
+    @apply text-xs text-gray-400;
+  }
+
+  &__avatar {
+    @apply flex mr-3;
+
+    img {
+      @apply rounded-full;
+    }
+  }
+}

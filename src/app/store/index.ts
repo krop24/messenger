@@ -1,2 +1,2 @@
-export { store } from './store.ts'
-export * from './types.ts'
+export { store } from './store'
+export * from './types'
