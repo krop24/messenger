@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { ChangeEvent } from 'react'
 import { useAppSelector } from 'shared/lib/store'
 import { Link } from 'react-router-dom'
-import { projectRoutes } from 'app/router'
+import { projectRoutes } from 'app/router/const'
 
 export const SignIn = () => {
   const dispatch = useDispatch()

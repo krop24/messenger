@@ -16,6 +16,9 @@ interface ITextFieldProps {
   type?: string
   maxLength?: number | undefined
 
+  hasError?: boolean
+  errorText?: string
+
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   onInput?: (e: ChangeEvent<HTMLInputElement>) => void
 }
@@ -32,6 +35,8 @@ export const TextField = ({
   maxLength,
   onChange = () => {},
   onInput = () => {},
+  hasError = false,
+  errorText = 'Заполните поле!',
 }: ITextFieldProps) => {
   const [showPassword, setShowPassword] = useState(false)
 
@@ -47,7 +52,7 @@ export const TextField = ({
   const handleShow = () => setShowPassword(!showPassword)
 
   return (
-    <div className={clsx('text-field', className)}>
+    <div className={clsx('text-field', className, hasError && 'text-field_error')}>
       <label className="text-field__label" htmlFor={id}>
         {label}
       </label>
@@ -58,7 +63,7 @@ export const TextField = ({
           onChange={onChange}
           onInput={onInput}
           type={type}
-          className="text-field__input"
+          className={clsx('text-field__input', hasError && 'text-field__input_error')}
           autoComplete="true"
           placeholder={placeholder}
           name={name}
@@ -71,6 +76,7 @@ export const TextField = ({
           </div>
         )}
       </div>
+      {hasError && <div className="text-field_error-text">{errorText}</div>}
     </div>
   )
 }

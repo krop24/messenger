@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 
+.container {
+  @apply mx-auto max-w-[1124px];
+}
+
 h1 {
   @apply text-3xl font-bold;
 }
@@ -22,9 +26,9 @@ select {
 
 
 a {
-  @apply text-blue-700 transition-all duration-300;
+  @apply text-blue-700 transition-all duration-300 underline;
 
   &:hover {
-    @apply text-primary-300;
+    @apply opacity-70;
   }
 }

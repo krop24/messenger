@@ -15,3 +15,8 @@ export const registrationSelector = createSelector(
   authSelector,
   (state: IAuthState) => state.registration
 )
+
+export const userSelector = createSelector(
+  authSelector,
+  (state: IAuthState) => state.user
+)

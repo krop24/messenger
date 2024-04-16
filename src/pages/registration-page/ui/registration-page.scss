@@ -1,0 +1,12 @@
+.registration {
+  @apply w-full flex max-h-[100vh];
+
+  &__title {
+    @apply pb-4;
+  }
+
+  &__form {
+    @apply flex flex-col m-auto w-full max-w-[500px] gap-4;
+  }
+}
+

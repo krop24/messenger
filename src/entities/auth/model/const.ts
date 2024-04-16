@@ -1,4 +1,4 @@
-import { IAuthState, IRegistration } from './types'
+import { IAuthState, IRegistration, IUser } from './types'
 
 const registrationFields: IRegistration = {
   username: '',
@@ -10,7 +10,16 @@ const registrationFields: IRegistration = {
   repeatPassword: '',
 }
 
+const user: IUser = {
+  username: '',
+  email: '',
+  photo: null,
+  firstName: '',
+  lastName: '',
+}
+
 export const authInitialState: IAuthState = {
+  user,
   registration: registrationFields,
   loading: false,
   login: {

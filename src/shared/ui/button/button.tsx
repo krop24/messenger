@@ -19,7 +19,7 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={clsx('btn', className, `btn__${variant}`)}
+      className={clsx('btn', className, `btn_${variant}`)}
       onClick={onClick}
     >
       {children}
