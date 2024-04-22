@@ -1,0 +1,79 @@
+.chat {
+  @apply flex flex-col pl-3 h-full;
+
+  &__header {
+    @apply flex items-center rounded-2xl bg-white p-3 mb-2;
+  }
+
+  &__avatar {
+    @apply mr-3;
+  }
+
+  &__video {
+    @apply ml-auto;
+  }
+
+  &__status {
+    @apply text-xs;
+
+    &_online {
+      @apply text-green-500;
+    }
+  }
+
+  &__area {
+    @apply flex flex-col gap-3 ;
+
+    &-wrapper {
+      @apply flex flex-col-reverse overflow-x-hidden  overflow-y-scroll h-[calc(100vh-224px)] p-3 rounded-2xl bg-white  mb-2;
+
+      &::-webkit-scrollbar {
+        @apply block h-1.5 w-1.5 opacity-0;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        @apply block bg-gray-200 rounded transition-all;
+      }
+    }
+  }
+
+  &__message {
+    @apply flex items-start gap-2 max-w-[50%];
+
+    &:first-child {
+      @apply mt-auto;
+    }
+
+    &-content {
+      @apply max-w-[calc(100%-40px)] flex flex-col bg-gray-100 p-3 rounded-2xl;
+    }
+
+
+    &-time {
+      @apply text-xs text-gray-400;
+    }
+
+    &_right {
+      @apply ml-auto;
+    }
+
+    &-avatar {
+      @apply rounded-full w-8 h-8;
+    }
+  }
+
+  &__textarea {
+    @apply flex items-center gap-3 p-3 rounded-2xl bg-white;
+
+    &-input {
+      @apply p-3 resize-none flex-grow bg-gray-100 rounded-2xl h-12;
+
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        @apply hidden;
+      }
+    }
+  }
+}

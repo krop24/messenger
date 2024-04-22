@@ -1,8 +1,8 @@
 import { ChangeEvent, useState } from 'react'
 import clsx from 'clsx'
+import { Icon } from 'shared/ui/icon'
+
 import './text-field.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 interface ITextFieldProps {
   id?: string
@@ -72,7 +72,7 @@ export const TextField = ({
 
         {icon && (
           <div className="text-field__icon">
-            <FontAwesomeIcon icon={icon as IconProp} onClick={handleShow} />
+            <Icon icon={icon} onClick={handleShow} />
           </div>
         )}
       </div>

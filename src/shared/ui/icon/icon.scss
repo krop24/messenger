@@ -1,0 +1,9 @@
+.icon {
+  &-button {
+    @apply cursor-pointer flex items-center justify-center rounded-full w-11 h-11 bg-transparent transition-all duration-300 ease-in-out;
+
+    &:hover, &:active {
+      @apply bg-gray-200;
+    }
+  }
+}

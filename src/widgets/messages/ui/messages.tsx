@@ -1,5 +1,4 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from 'shared/ui/icon'
 
 import './messages.scss'
 
@@ -10,7 +9,7 @@ export const Messages = () => {
 
       <label htmlFor="search" className="messages__search">
         <span className="hidden">Search</span>
-        <FontAwesomeIcon icon={'search' as IconProp} className="messages__search-icon" />
+        <Icon icon="search" className="messages__search-icon" />
         <input id="search" type="text" placeholder="Поиск" />
       </label>
 

@@ -12,7 +12,7 @@
   &__item {
     @apply w-12 h-12 flex items-center justify-center  rounded-2xl text-primary-400 text-2xl;
 
-    &-active {
+    &_active {
       @apply bg-primary-400 text-white pointer-events-none;
       box-shadow: 0 4px 4px rgba(28, 41, 75, 0.15);
     }
