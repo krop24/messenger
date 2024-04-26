@@ -1,7 +1,8 @@
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { projectRoutes } from 'app/router/const'
 import { useEffect } from 'react'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { projectRoutes } from 'app/router'
 import { Dashboard } from 'widgets/dashboard'
+
 import './home-page.scss'
 
 export const HomePage = () => {

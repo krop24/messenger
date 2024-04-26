@@ -1,24 +1,52 @@
-import './sign-in.scss'
-import { TextField } from 'shared/ui/text-field'
+import { ChangeEvent, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { projectRoutes } from 'app/router'
+import {
+  authSelector,
+  handleLogin,
+  handleUpdateValue,
+  loginSelector,
+  validateLogin,
+} from 'entities/auth'
+import { validateObjectFields } from 'shared/lib/object'
+import { useAppDispatch, useAppSelector } from 'shared/lib/store'
 import { Button } from 'shared/ui/button'
 import { Logo } from 'shared/ui/logo'
-import { handleUpdateValue, loginSelector, signIn } from 'entities/auth'
-import { useDispatch } from 'react-redux'
-import { ChangeEvent } from 'react'
-import { useAppSelector } from 'shared/lib/store'
-import { Link } from 'react-router-dom'
-import { projectRoutes } from 'app/router/const'
+import { TextField } from 'shared/ui/text-field'
+
+import './sign-in.scss'
 
 export const SignIn = () => {
-  const dispatch = useDispatch()
-  const { username, password } = useAppSelector(loginSelector)
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  const { username, password, error } = useAppSelector(loginSelector)
+  const { token } = useAppSelector(authSelector)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     dispatch(
-      handleUpdateValue({ value: e.target.value, name: e.target.name, type: 'login' })
+      handleUpdateValue({ value: e.target.value, name: e.target.name, type: 'login' }),
     )
 
-  const handleSignIn = () => dispatch(signIn())
+  const handleSignIn = () => {
+    dispatch(validateLogin())
+
+    const data = {
+      username,
+      password,
+      error,
+    }
+
+    if (validateObjectFields(data)) {
+      dispatch(handleLogin(data))
+    }
+  }
+
+  useEffect(() => {
+    if (token) {
+      navigate(projectRoutes.chat)
+    }
+  }, [token])
 
   return (
     <div className="sign-in">
@@ -31,6 +59,7 @@ export const SignIn = () => {
             label="Username"
             value={username}
             name="username"
+            hasError={error.username}
             placeholder="Enter username"
           />
           <TextField
@@ -40,6 +69,7 @@ export const SignIn = () => {
             label="Password"
             placeholder="Enter password"
             type="password"
+            hasError={error.password}
           />
           <Button onClick={handleSignIn}>Войти</Button>
 

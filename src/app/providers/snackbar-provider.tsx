@@ -1,9 +1,8 @@
 import React from 'react'
-
 import { createPortal } from 'react-dom'
-import { Loader } from 'shared/ui/loader'
+import { snackbarSelector } from 'entities/snackbar'
 import { useAppSelector } from 'shared/lib/store'
-import { snackbarSelector } from './model/selectors'
+import { Loader } from 'shared/ui/loader'
 
 interface ISnackbarProviderProps {
   children: React.ReactNode

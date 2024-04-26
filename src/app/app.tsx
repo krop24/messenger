@@ -1,21 +1,27 @@
-import './styles/index.scss'
-import { AppRouter } from 'app/router'
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { far } from '@fortawesome/free-regular-svg-icons'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { AppRouter } from 'app/router'
 import { store } from 'app/store'
-import { SnackbarProvider } from 'entities/snackbar'
+
+import { AuthProvider } from './providers/auth-provider'
+import { SnackbarProvider } from './providers/snackbar-provider'
+
+import './styles/index.scss'
 
 export const App = () => {
   return (
     <Provider store={store}>
-      <SnackbarProvider>
-        <AppRouter />
-      </SnackbarProvider>
+      <BrowserRouter>
+        <SnackbarProvider>
+          <AuthProvider>
+            <AppRouter />
+          </AuthProvider>
+        </SnackbarProvider>
+      </BrowserRouter>
     </Provider>
   )
 }

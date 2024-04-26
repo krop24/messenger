@@ -1,17 +1,28 @@
-import './registration-page.scss'
-import { TextField } from 'shared/ui/text-field'
+import { ChangeEvent, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { projectRoutes } from 'app/router'
+import {
+  authSelector,
+  handleRegister,
+  handleUpdateValue,
+  IRegistration,
+  registrationSelector,
+  validateRegistration,
+} from 'entities/auth'
+import { validateObjectFields } from 'shared/lib/object'
+import { useAppDispatch, useAppSelector } from 'shared/lib/store'
 import { Button } from 'shared/ui/button'
-import { useAppSelector } from 'shared/lib/store'
-import { handleUpdateValue, registrationSelector } from 'entities/auth'
-import { ChangeEvent } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { projectRoutes } from 'app/router/const'
+import { TextField } from 'shared/ui/text-field'
+
+import './registration-page.scss'
 
 export const RegistrationPage = () => {
-  const dispatch = useDispatch()
-  const { username, password, repeatPassword, email, firstName, lastName } =
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+
+  const { username, password, repeatPassword, email, firstName, lastName, error } =
     useAppSelector(registrationSelector)
+  const { token } = useAppSelector(authSelector)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     dispatch(
@@ -19,8 +30,37 @@ export const RegistrationPage = () => {
         value: e.target.value,
         name: e.target.name,
         type: 'registration',
-      })
+      }),
     )
+
+  const handleSubmit = () => {
+    dispatch(validateRegistration())
+
+    const fields = {
+      username,
+      password,
+      repeatPassword,
+      email,
+      firstName,
+      lastName,
+    }
+
+    if (validateObjectFields(fields)) {
+      const data: IRegistration = {
+        ...fields,
+        photo: null,
+        error,
+      }
+
+      dispatch(handleRegister(data))
+    }
+  }
+
+  useEffect(() => {
+    if (token) {
+      navigate(projectRoutes.chat)
+    }
+  }, [token])
 
   return (
     <div className="registration">
@@ -44,6 +84,7 @@ export const RegistrationPage = () => {
               className="w-[calc(50%-0.5rem)]"
               name="firstName"
               placeholder="Введите имя"
+              hasError={error.firstName}
             />
             <TextField
               onChange={handleChange}
@@ -52,6 +93,7 @@ export const RegistrationPage = () => {
               label="Фамилия"
               name="lastName"
               placeholder="Введите фамилию"
+              hasError={error.lastName}
             />
             <TextField
               value={username}
@@ -60,6 +102,7 @@ export const RegistrationPage = () => {
               label="Логин"
               name="username"
               placeholder="Введите логин"
+              hasError={error.username}
             />
             <TextField
               value={email}
@@ -68,6 +111,8 @@ export const RegistrationPage = () => {
               label="Email"
               name="email"
               placeholder="Введите email"
+              errorText="Введите правильный email"
+              hasError={error.email}
             />
             <TextField
               value={password}
@@ -77,6 +122,7 @@ export const RegistrationPage = () => {
               name="password"
               placeholder="Введите пароль"
               type="password"
+              hasError={error.password}
             />
             <TextField
               value={repeatPassword}
@@ -86,9 +132,13 @@ export const RegistrationPage = () => {
               name="repeatPassword"
               placeholder="Введите пароль"
               type="password"
+              errorText="Введите пароль повторно"
+              hasError={error.repeatPassword}
             />
           </div>
-          <Button className="w-full">Зарегистрироваться</Button>
+          <Button className="w-full" onClick={handleSubmit}>
+            Зарегистрироваться
+          </Button>
 
           <div className="w-full text-center">
             Зарегистрированы?&nbsp;

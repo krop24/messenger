@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { dashboardRoutes, projectRoutes } from 'app/router/const'
+import { dashboardRoutes, projectRoutes } from 'app/router'
 import clsx from 'clsx'
 import { userSelector } from 'entities/auth'
 import { useAppSelector } from 'shared/lib/store'

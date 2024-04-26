@@ -8,6 +8,14 @@ const registrationFields: IRegistration = {
   lastName: '',
   password: '',
   repeatPassword: '',
+  error: {
+    username: false,
+    email: false,
+    firstName: false,
+    lastName: false,
+    password: false,
+    repeatPassword: false,
+  },
 }
 
 const user: IUser = {
@@ -18,12 +26,25 @@ const user: IUser = {
   lastName: '',
 }
 
+const loginFields = {
+  username: '',
+  password: '',
+  error: {
+    username: false,
+    password: false,
+  },
+}
+
 export const authInitialState: IAuthState = {
   user,
   registration: registrationFields,
   loading: false,
-  login: {
-    username: '',
-    password: '',
-  },
+  login: loginFields,
+  token: null,
+}
+
+export const authActions = {
+  login: 'auth/login',
+  register: 'auth/register',
+  check: 'auth/check',
 }

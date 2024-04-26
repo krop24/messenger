@@ -6,6 +6,14 @@ export interface IRegistration {
   lastName: string
   password: string
   repeatPassword: string
+  error: {
+    username: boolean
+    email: boolean
+    firstName: boolean
+    lastName: boolean
+    password: boolean
+    repeatPassword: boolean
+  }
 }
 
 export interface IUser {
@@ -16,12 +24,19 @@ export interface IUser {
   lastName: string
 }
 
+export interface ILogin {
+  username: string
+  password: string
+  error: {
+    username: boolean
+    password: boolean
+  }
+}
+
 export interface IAuthState {
   user: IUser
   registration: IRegistration
   loading: boolean
-  login: {
-    username: string
-    password: string
-  }
+  login: ILogin
+  token: Nullable<string>
 }
