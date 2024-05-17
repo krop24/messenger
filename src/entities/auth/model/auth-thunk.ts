@@ -26,7 +26,7 @@ export const handleRegister = createAsyncThunk(
       return response.data
     } catch (e) {
       thunkAPI.dispatch(handleLoading(false))
-      return thunkAPI.rejectWithValue(formatError(e))
+      return formatError(e)
     }
   },
 )
@@ -44,7 +44,6 @@ export const handleLogin = createAsyncThunk(
 
       const response = await api.post(apiUrls.auth.login, requestData)
       thunkAPI.dispatch(handleLoading(false))
-
       return response.data
     } catch (e) {
       thunkAPI.dispatch(handleLoading(false))
@@ -57,8 +56,8 @@ export const checkAuth = createAsyncThunk(authActions.check, async (_, thunkAPI)
   try {
     thunkAPI.dispatch(handleLoading(true))
     const response = await api.get(apiUrls.auth.check)
-    thunkAPI.dispatch(handleLoading(false))
 
+    thunkAPI.dispatch(handleLoading(false))
     return response.data
   } catch (e) {
     thunkAPI.dispatch(handleLoading(false))

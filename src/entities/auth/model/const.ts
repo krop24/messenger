@@ -37,6 +37,7 @@ const loginFields = {
 
 export const authInitialState: IAuthState = {
   user,
+  isRegistered: false,
   registration: registrationFields,
   loading: false,
   login: loginFields,

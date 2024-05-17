@@ -16,11 +16,11 @@ export const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <SnackbarProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <SnackbarProvider>
             <AppRouter />
-          </AuthProvider>
-        </SnackbarProvider>
+          </SnackbarProvider>
+        </AuthProvider>
       </BrowserRouter>
     </Provider>
   )

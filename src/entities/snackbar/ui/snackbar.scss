@@ -1,5 +1,5 @@
 .snackbar {
-  @apply fixed bottom-10 right-10 bg-white rounded-md p-2 hidden items-center;
+  @apply fixed bottom-10 right-10 bg-white rounded-md p-2 hidden items-center border border-gray-300 shadow;
 
   &_active {
     @apply flex;

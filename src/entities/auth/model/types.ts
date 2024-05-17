@@ -35,6 +35,7 @@ export interface ILogin {
 
 export interface IAuthState {
   user: IUser
+  isRegistered: boolean
   registration: IRegistration
   loading: boolean
   login: ILogin

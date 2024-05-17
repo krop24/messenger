@@ -22,4 +22,4 @@ export const snackbarSlice = createSlice({
   },
 })
 
-export const { handleLoading, showSnackbar } = snackbarSlice.actions
+export const { handleLoading, showSnackbar, closeSnackbar } = snackbarSlice.actions

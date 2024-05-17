@@ -8,7 +8,6 @@ import {
   loginSelector,
   validateLogin,
 } from 'entities/auth'
-import { ESnackbarType, showSnackbar } from 'entities/snackbar'
 import { validateObjectFields } from 'shared/lib/object'
 import { useAppDispatch, useAppSelector } from 'shared/lib/store'
 import { Button } from 'shared/ui/button'
@@ -49,19 +48,9 @@ export const SignIn = () => {
     }
   }, [token])
 
-  useEffect(() => {
-    dispatch(
-      showSnackbar({
-        open: true,
-        message: 'Fuck you Fucking test message!',
-        type: ESnackbarType.success,
-      }),
-    )
-  }, [])
-
   return (
     <div className="sign-in">
-      <div className="h-full w-1/2 p-6 flex">
+      <div className="h-full w-full p-6 flex lg:w-1/2">
         <form className="sign-in__form">
           <Logo className="flex mx-auto text-primary-400 w-32" />
           <h1 className="text-center mb-4">Войти в Whisper</h1>
@@ -93,7 +82,7 @@ export const SignIn = () => {
         </form>
       </div>
 
-      <div className="h-full w-1/2">
+      <div className="h-full w-1/2 hidden lg:block">
         <img
           className="h-full w-full object-cover"
           width={250}

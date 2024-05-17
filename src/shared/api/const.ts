@@ -1,5 +1,5 @@
 export const apiUrls = {
-  base: 'http://localhost:3000/api',
+  base: 'http://localhost:9000/api',
   auth: {
     login: '/auth/login',
     register: '/auth/register',

@@ -12,6 +12,7 @@ import {
 import { validateObjectFields } from 'shared/lib/object'
 import { useAppDispatch, useAppSelector } from 'shared/lib/store'
 import { Button } from 'shared/ui/button'
+import { Icon } from 'shared/ui/icon'
 import { TextField } from 'shared/ui/text-field'
 
 import './registration-page.scss'
@@ -22,7 +23,7 @@ export const RegistrationPage = () => {
 
   const { username, password, repeatPassword, email, firstName, lastName, error } =
     useAppSelector(registrationSelector)
-  const { token } = useAppSelector(authSelector)
+  const { token, isRegistered } = useAppSelector(authSelector)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
     dispatch(
@@ -64,7 +65,7 @@ export const RegistrationPage = () => {
 
   return (
     <div className="registration">
-      <div className="h-full w-1/2">
+      <div className="h-full w-1/2 hidden lg:block">
         <img
           className="h-full w-full object-cover"
           width={250}
@@ -73,80 +74,93 @@ export const RegistrationPage = () => {
           src="/assets/img/red-plant.jpg"
         />
       </div>
-      <div className="h-full w-1/2 p-6 flex">
-        <form action="#" className="registration__form">
-          <h1 className="registration__title">Registration.</h1>
-          <div className="flex flex-wrap gap-4">
-            <TextField
-              value={firstName}
-              onChange={handleChange}
-              label="Имя"
-              className="w-[calc(50%-0.5rem)]"
-              name="firstName"
-              placeholder="Введите имя"
-              hasError={error.firstName}
+      <div className="h-full w-full p-6 flex lg:w-1/2">
+        {isRegistered ? (
+          <div className="registration__success">
+            <Icon
+              className="registration__success-icon"
+              icon="fa-regular fa-circle-check"
             />
-            <TextField
-              onChange={handleChange}
-              value={lastName}
-              className="w-[calc(50%-0.5rem)]"
-              label="Фамилия"
-              name="lastName"
-              placeholder="Введите фамилию"
-              hasError={error.lastName}
-            />
-            <TextField
-              value={username}
-              onChange={handleChange}
-              className="w-[calc(50%-0.5rem)]"
-              label="Логин"
-              name="username"
-              placeholder="Введите логин"
-              hasError={error.username}
-            />
-            <TextField
-              value={email}
-              onChange={handleChange}
-              className="w-[calc(50%-0.5rem)]"
-              label="Email"
-              name="email"
-              placeholder="Введите email"
-              errorText="Введите правильный email"
-              hasError={error.email}
-            />
-            <TextField
-              value={password}
-              onChange={handleChange}
-              className="w-full"
-              label="Пароль"
-              name="password"
-              placeholder="Введите пароль"
-              type="password"
-              hasError={error.password}
-            />
-            <TextField
-              value={repeatPassword}
-              onChange={handleChange}
-              className="w-full"
-              label="Повторите пароль"
-              name="repeatPassword"
-              placeholder="Введите пароль"
-              type="password"
-              errorText="Введите пароль повторно"
-              hasError={error.repeatPassword}
-            />
-          </div>
-          <Button className="w-full" onClick={handleSubmit}>
-            Зарегистрироваться
-          </Button>
-
-          <div className="w-full text-center">
-            Зарегистрированы?&nbsp;
-            <Link className="inline-block" to={projectRoutes.signIn}>
+            <h1 className="registration__title">Вы успешно зарегистрированы.</h1>
+            <Link className="registration__success-link" to={projectRoutes.signIn}>
               Войти
             </Link>
           </div>
-        </form>
+        ) : (
+          <form action="#" className="registration__form">
+            <h1 className="registration__title">Registration.</h1>
+            <div className="flex flex-wrap gap-4">
+              <TextField
+                value={firstName}
+                onChange={handleChange}
+                label="Имя"
+                className="w-full md:w-[calc(50%-0.5rem)]"
+                name="firstName"
+                placeholder="Введите имя"
+                hasError={error.firstName}
+              />
+              <TextField
+                onChange={handleChange}
+                value={lastName}
+                className="w-full md:w-[calc(50%-0.5rem)]"
+                label="Фамилия"
+                name="lastName"
+                placeholder="Введите фамилию"
+                hasError={error.lastName}
+              />
+              <TextField
+                value={username}
+                onChange={handleChange}
+                className="w-full md:w-[calc(50%-0.5rem)]"
+                label="Логин"
+                name="username"
+                placeholder="Введите логин"
+                hasError={error.username}
+              />
+              <TextField
+                value={email}
+                onChange={handleChange}
+                className="w-full md:w-[calc(50%-0.5rem)]"
+                label="Email"
+                name="email"
+                placeholder="Введите email"
+                errorText="Введите правильный email"
+                hasError={error.email}
+              />
+              <TextField
+                value={password}
+                onChange={handleChange}
+                className="w-full"
+                label="Пароль"
+                name="password"
+                placeholder="Введите пароль"
+                type="password"
+                hasError={error.password}
+              />
+              <TextField
+                value={repeatPassword}
+                onChange={handleChange}
+                className="w-full"
+                label="Повторите пароль"
+                name="repeatPassword"
+                placeholder="Введите пароль"
+                type="password"
+                errorText="Введите пароль повторно"
+                hasError={error.repeatPassword}
+              />
+            </div>
+            <Button className="w-full" onClick={handleSubmit}>
+              Зарегистрироваться
+            </Button>
+
+            <div className="w-full text-center">
+              Зарегистрированы?&nbsp;
+              <Link className="inline-block" to={projectRoutes.signIn}>
+                Войти
+              </Link>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   )

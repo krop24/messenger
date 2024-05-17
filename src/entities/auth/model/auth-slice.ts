@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IChangeEventProp } from 'app/store'
-import { checkAuth, handleLogin } from 'entities/auth'
+import { checkAuth, handleLogin, handleRegister } from 'entities/auth'
 import { cloneObject } from 'shared/lib/object'
 import { isValidEmail, isValidString } from 'shared/lib/string'
 
@@ -86,9 +86,15 @@ export const authSlice = createSlice({
     })
 
     builder.addCase(checkAuth.fulfilled, (state, action) => {
-      if (!action.payload?.success) {
+      if (!action.payload.success) {
         localStorage.removeItem('token')
         state.token = null
+      }
+    })
+
+    builder.addCase(handleRegister.fulfilled, (state, action) => {
+      if (action.payload?.email) {
+        state.isRegistered = true
       }
     })
   },

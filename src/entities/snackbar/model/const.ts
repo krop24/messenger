@@ -1,5 +1,5 @@
-import { ESnackbarType } from './snackbar-enums.ts'
-import { ISnackbarState } from './snackbar-types.ts'
+import { ESnackbarType } from './enums.ts'
+import { ISnackbarState } from './types.ts'
 
 export const snackbarInitialState: ISnackbarState = {
   open: false,

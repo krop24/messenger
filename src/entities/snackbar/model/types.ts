@@ -6,3 +6,8 @@ export interface ISnackbarState {
   type: ESnackbarType
   loading: boolean
 }
+
+export interface ISnackbarShow {
+  message: string
+  type: ESnackbarType
+}

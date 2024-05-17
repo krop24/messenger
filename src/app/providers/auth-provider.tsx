@@ -18,6 +18,10 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
   const { token } = useAppSelector(authSelector)
 
   useEffect(() => {
+    if (token) {
+      dispatch(checkAuth())
+    }
+
     if (
       !token &&
       ![projectRoutes.signIn, projectRoutes.registration].includes(location.pathname)
@@ -26,11 +30,9 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     }
   }, [token])
 
-  dispatch(checkToken())
+  useEffect(() => {
+    dispatch(checkToken())
+  }, [])
 
-  if (token) {
-    dispatch(checkAuth())
-  }
-  
   return children
 }
