@@ -1,6 +1,6 @@
 import React from 'react'
 import { createPortal } from 'react-dom'
-import { snackbarSelector } from 'entities/snackbar'
+import { Snackbar, snackbarSelector } from 'entities/snackbar'
 import { useAppSelector } from 'shared/lib/store'
 import { Loader } from 'shared/ui/loader'
 
@@ -14,6 +14,7 @@ export const SnackbarProvider = ({ children }: ISnackbarProviderProps) => {
   return (
     <>
       {createPortal(<Loader loading={loading} />, document.body)}
+      {createPortal(<Snackbar />, document.body)}
       {children}
     </>
   )

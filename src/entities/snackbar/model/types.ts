@@ -1,4 +1,4 @@
-import { ESnackbarType } from './enums'
+import { ESnackbarType } from './enums.ts'
 
 export interface ISnackbarState {
   open: boolean

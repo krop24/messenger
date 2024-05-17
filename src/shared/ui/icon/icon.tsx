@@ -7,7 +7,7 @@ interface IPropsIcon {
   onClick?: () => void
 }
 
-export const Icon = ({ icon, className, onClick }: IPropsIcon) => {
+export const Icon = ({ icon, className = '', onClick = () => {} }: IPropsIcon) => {
   return (
     <FontAwesomeIcon icon={icon as IconProp} onClick={onClick} className={className} />
   )

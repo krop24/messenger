@@ -1,4 +1,5 @@
-export * from './model/enums'
-export * from './model/selectors'
+export * from './model/snackbar-enums.ts'
+export * from './model/snackbar-selectors'
 export * from './model/snackbar-slice'
-export * from './model/types'
+export * from './model/snackbar-types.ts'
+export { Snackbar } from './ui/snackbar'

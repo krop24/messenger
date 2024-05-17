@@ -1,0 +1,38 @@
+.snackbar {
+  @apply fixed bottom-10 right-10 bg-white rounded-md p-2 hidden items-center;
+
+  &_active {
+    @apply flex;
+    animation: inOut 3s;
+  }
+
+  &__icon {
+    @apply w-6 h-6 rounded-md flex items-center justify-center mr-2 text-white;
+
+    &_success {
+      @apply bg-green-600;
+    }
+  }
+}
+
+@keyframes inOut {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}

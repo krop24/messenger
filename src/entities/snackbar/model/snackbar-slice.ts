@@ -10,7 +10,16 @@ export const snackbarSlice = createSlice({
       state.loading =
         typeof action.payload === 'boolean' ? action.payload : !state.loading
     },
+    showSnackbar: (state, action) => {
+      state.open = true
+      state.message = action.payload.message
+      state.type = action.payload.type
+    },
+    closeSnackbar: state => {
+      state.open = false
+      state.message = ''
+    },
   },
 })
 
-export const { handleLoading } = snackbarSlice.actions
+export const { handleLoading, showSnackbar } = snackbarSlice.actions

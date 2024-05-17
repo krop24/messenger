@@ -8,6 +8,7 @@ import {
   loginSelector,
   validateLogin,
 } from 'entities/auth'
+import { ESnackbarType, showSnackbar } from 'entities/snackbar'
 import { validateObjectFields } from 'shared/lib/object'
 import { useAppDispatch, useAppSelector } from 'shared/lib/store'
 import { Button } from 'shared/ui/button'
@@ -47,6 +48,16 @@ export const SignIn = () => {
       navigate(projectRoutes.chat)
     }
   }, [token])
+
+  useEffect(() => {
+    dispatch(
+      showSnackbar({
+        open: true,
+        message: 'Fuck you Fucking test message!',
+        type: ESnackbarType.success,
+      }),
+    )
+  }, [])
 
   return (
     <div className="sign-in">
