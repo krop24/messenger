@@ -28,6 +28,7 @@
   &__item {
     @apply flex items-center px-8 py-2.5 transition-all duration-500 cursor-pointer;
 
+
     &:not(:first-child) {
       @apply border-t border-gray-200;
     }
@@ -54,7 +55,7 @@
   }
 
   &__text {
-    @apply text-xs text-gray-400;
+    @apply text-left text-xs text-gray-400;
   }
 
   &__avatar {

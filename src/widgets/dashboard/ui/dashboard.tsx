@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
 import { dashboardRoutes, projectRoutes } from 'app/router'
 import clsx from 'clsx'
-import { userSelector } from 'entities/auth'
-import { useAppSelector } from 'shared/lib/store'
+import { handleOpenLogout, Logout, userSelector } from 'entities/auth'
+import { useAppDispatch, useAppSelector } from 'shared/lib/store'
 import { Avatar } from 'shared/ui/avatar'
 import { Button } from 'shared/ui/button'
 import { EButtonType } from 'shared/ui/button/enums'
@@ -12,6 +12,7 @@ import { Logo } from 'shared/ui/logo'
 import './dashboard.scss'
 
 export const Dashboard = () => {
+  const dispatch = useAppDispatch()
   const location = useLocation()
 
   const { firstName, lastName, photo } = useAppSelector(userSelector)
@@ -45,9 +46,15 @@ export const Dashboard = () => {
         <Icon icon="cog" />
       </Link>
 
-      <Button className="dashboard__item mt-5" variant={EButtonType.default}>
+      <Button
+        className="dashboard__item mt-5"
+        variant={EButtonType.default}
+        onClick={() => dispatch(handleOpenLogout())}
+      >
         <Icon icon="sign-out-alt" />
       </Button>
+
+      <Logout />
     </div>
   )
 }

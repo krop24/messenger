@@ -1,0 +1,19 @@
+.logout {
+  @apply fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-30;
+
+  &__overlay {
+    @apply absolute top-0 left-0 z-10 w-full h-full bg-black bg-opacity-50;
+  }
+
+  &__title {
+    @apply text-xl font-bold;
+  }
+
+  &__content {
+    @apply relative z-20 bg-white rounded-md overflow-hidden p-5;
+  }
+
+  &__buttons {
+    @apply flex gap-1 mt-3;
+  }
+}

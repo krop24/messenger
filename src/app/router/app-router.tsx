@@ -1,39 +1,24 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { Layout } from 'app/layout'
-import { projectRoutes, routes } from 'app/router/const'
-
-interface IRoute {
-  path: string
-  Component: React.FC
-}
+import { projectRoutes } from 'app/router/const'
+import { ChatPage } from 'pages/chat-page'
+import { HomePage } from 'pages/home-page'
+import { ProfilePage } from 'pages/profile-page'
+import { RegistrationPage } from 'pages/registration-page'
+import { SettingsPage } from 'pages/settings-page'
+import { SignIn } from 'pages/sign-in'
 
 export const AppRouter = () => {
   return (
-    <div className="app">
-      <Routes>
-        <Route path={projectRoutes.home} Component={Layout}>
-          {routes.map((route, index) => {
-            const { Component } = route
-
-            return (
-              <Route key={index + route.path} path={route.path} element={<Component />}>
-                {route?.children?.map((child: IRoute, i: number) => {
-                  const { Component } = child
-
-                  return (
-                    <Route
-                      key={i + child.path}
-                      path={child.path}
-                      element={<Component />}
-                    />
-                  )
-                })}
-              </Route>
-            )
-          })}
+    <Routes>
+      <Route path={projectRoutes.signIn} element={<SignIn />} />
+      <Route path={projectRoutes.registration} element={<RegistrationPage />} />
+      <Route path={projectRoutes.home} element={<HomePage />}>
+        <Route path={projectRoutes.chat} element={<ChatPage />}>
+          <Route path=":id" element={<ChatPage />} />
         </Route>
-      </Routes>
-    </div>
+        <Route path={projectRoutes.settings} element={<SettingsPage />} />
+        <Route path={projectRoutes.profile} element={<ProfilePage />} />
+      </Route>
+    </Routes>
   )
 }

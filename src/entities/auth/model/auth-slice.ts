@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IChangeEventProp } from 'app/store'
 import { checkAuth, handleLogin, handleRegister } from 'entities/auth'
+import { jwtDecode } from 'jwt-decode'
 import { cloneObject } from 'shared/lib/object'
 import { isValidEmail, isValidString } from 'shared/lib/string'
 
@@ -72,8 +73,23 @@ export const authSlice = createSlice({
       const token = localStorage.getItem('token')
 
       if (token) {
+        const jwt = jwtDecode(token)
+
         state.token = token
+        state.user = {
+          ...state.user,
+          ...(jwt || {}),
+        }
       }
+    },
+    logout: state => {
+      state.token = null
+      state.isLogoutOpen = false
+
+      localStorage.removeItem('token')
+    },
+    handleOpenLogout: state => {
+      state.isLogoutOpen = !state.isLogoutOpen
     },
   },
   extraReducers: builder => {
@@ -100,5 +116,11 @@ export const authSlice = createSlice({
   },
 })
 
-export const { checkToken, handleUpdateValue, validateRegistration, validateLogin } =
-  authSlice.actions
+export const {
+  checkToken,
+  handleUpdateValue,
+  handleOpenLogout,
+  logout,
+  validateRegistration,
+  validateLogin,
+} = authSlice.actions

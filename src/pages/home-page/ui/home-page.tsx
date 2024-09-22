@@ -1,20 +1,9 @@
-import { useEffect } from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { projectRoutes } from 'app/router'
+import { Outlet } from 'react-router-dom'
 import { Dashboard } from 'widgets/dashboard'
 
 import './home-page.scss'
 
 export const HomePage = () => {
-  const navigate = useNavigate()
-  const location = useLocation()
-
-  useEffect(() => {
-    if (location.pathname === projectRoutes.home) {
-      navigate(projectRoutes.chat)
-    }
-  })
-
   return (
     <div className="container">
       <div className="flex">

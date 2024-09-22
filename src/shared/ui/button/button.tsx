@@ -21,7 +21,7 @@ export const Button = ({
   variant = EButtonType.contained,
   debounce = 0,
 }: IButtonProps) => {
-  const { debouncedFunction } = useDebounce(onClick, debounce)
+  const [debouncedFunction] = useDebounce(onClick, debounce)
 
   return (
     <button

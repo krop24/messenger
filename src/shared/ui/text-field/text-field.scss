@@ -9,6 +9,14 @@
     }
   }
 
+  &_disabled {
+    @apply opacity-60;
+
+    * {
+      @apply pointer-events-none;
+    }
+  }
+
   &__label {
     @apply text-sm;
   }

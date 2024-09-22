@@ -42,6 +42,7 @@ export const authInitialState: IAuthState = {
   loading: false,
   login: loginFields,
   token: null,
+  isLogoutOpen: false,
 }
 
 export const authActions = {

@@ -40,4 +40,5 @@ export interface IAuthState {
   loading: boolean
   login: ILogin
   token: Nullable<string>
+  isLogoutOpen: boolean
 }

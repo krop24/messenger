@@ -1,15 +1,11 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { authSelector, checkAuth, checkToken } from 'entities/auth'
 import { useAppDispatch, useAppSelector } from 'shared/lib/store'
 
 import { projectRoutes } from '../router'
 
-interface IAuthProviderProps {
-  children: React.ReactNode
-}
-
-export const AuthProvider = ({ children }: IAuthProviderProps) => {
+export const AuthProvider = () => {
   const dispatch = useAppDispatch()
 
   const location = useLocation()
@@ -34,5 +30,5 @@ export const AuthProvider = ({ children }: IAuthProviderProps) => {
     dispatch(checkToken())
   }, [])
 
-  return children
+  return <div />
 }

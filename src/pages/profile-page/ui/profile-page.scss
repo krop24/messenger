@@ -1,0 +1,25 @@
+.profile {
+  @apply flex flex-col items-center justify-center p-5 h-full;
+
+  &__header {
+    @apply flex flex-col justify-center items-center gap-5;
+  }
+
+  &__avatar {
+    @apply w-20 h-20 rounded-full;
+  }
+
+  &__name {
+    @apply text-2xl font-bold;
+  }
+
+  &__fields {
+    @apply grid grid-cols-2 gap-3 mt-5;
+  }
+
+  &__form {
+    &-button {
+      @apply mt-3;
+    }
+  }
+}

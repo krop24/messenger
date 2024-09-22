@@ -10,7 +10,20 @@
   }
 
   &__video {
-    @apply ml-auto;
+    @apply relative ml-auto z-10;
+
+    &-call {
+      &:before {
+        content: '';
+        left: -4px;
+        top: -3px;
+        height: 50px;
+        z-index: -1;
+        width: 50px;
+        @apply absolute  rounded-full bg-green-400;
+        animation: bounce 1.5s infinite;
+      }
+    }
   }
 
   &__status {
@@ -75,5 +88,17 @@
         @apply hidden;
       }
     }
+  }
+}
+
+
+@keyframes bounce {
+  from {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 0;
   }
 }

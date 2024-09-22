@@ -3,11 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 type Timer = ReturnType<typeof setTimeout>
 type SomeFunction = (...args: any[]) => void
 
-interface UseDebounceResult<Func> {
-  readonly debouncedFunction: Func
-  readonly loadingDebounce: boolean
-}
-
 /**
  * @param func The original, non debounced function (You can pass any number of args to it).
  * @param delay The delay (in ms) for the function to return.
@@ -17,8 +12,8 @@ interface UseDebounceResult<Func> {
  */
 export const useDebounce = <Func extends SomeFunction>(
   func: Func,
-  delay = 1200
-): UseDebounceResult<Func> => {
+  delay = 1200,
+): [Func, boolean] => {
   const timer = useRef<Timer>()
   const [loadingDebounce, setLoadingDebounce] = useState(false)
 
@@ -39,5 +34,5 @@ export const useDebounce = <Func extends SomeFunction>(
     timer.current = newTimer
   }) as Func
 
-  return { debouncedFunction, loadingDebounce }
+  return [debouncedFunction, loadingDebounce]
 }

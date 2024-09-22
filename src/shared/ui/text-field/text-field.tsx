@@ -16,6 +16,8 @@ interface ITextFieldProps {
   type?: string
   maxLength?: number | undefined
 
+  disabled?: boolean
+
   hasError?: boolean
   errorText?: string
 
@@ -30,8 +32,9 @@ export const TextField = ({
   label,
   className,
   placeholder,
-  value,
+  value = '',
   type = 'text',
+  disabled = false,
   maxLength,
   onChange = () => {},
   onInput = () => {},
@@ -52,7 +55,14 @@ export const TextField = ({
   const handleShow = () => setShowPassword(!showPassword)
 
   return (
-    <div className={clsx('text-field', className, hasError && 'text-field_error')}>
+    <div
+      className={clsx(
+        'text-field',
+        className,
+        hasError && 'text-field_error',
+        disabled && 'text-field_disabled',
+      )}
+    >
       <label className="text-field__label" htmlFor={id}>
         {label}
       </label>
